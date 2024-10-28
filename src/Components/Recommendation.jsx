@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-// import { useHistory } from "react-router-dom"; // Import useHistory
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/Recommendation.css";
 
 import Destination1 from "../assets/Destination1.png";
@@ -10,7 +10,7 @@ import Destination5 from "../assets/Destination5.png";
 import Destination6 from "../assets/Destination6.png";
 
 function Recommendation() {
-  // const history = useHistory(); // Initialize useHistory
+  const navigate = useNavigate();
 
   const data = [
     {
@@ -18,7 +18,7 @@ function Recommendation() {
       title: "Singapore",
       subTitle: "Singapore, officially the Republic of Singapore, is a",
       duration: "Approx 2 night trip",
-      link: "/singapore", // Add a link for navigation
+      link: "/singapore",
     },
     {
       image: Destination2,
@@ -69,9 +69,12 @@ function Recommendation() {
               <h3>{item.title}</h3>
               <p>{item.subTitle}</p>
               <button
-                onClick={"#"} // Use history to navigate
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent default behavior
+                  navigate(item.link); // Navigate to the link
+                }}
                 style={{
-                  backgroundColor: "rgba(243, 110, 9, 0.649)",
+                  background : "rgba(243, 110, 9, 0.649)",
                   borderRadius: "12px",
                   padding: "10px 20px",
                   border: "none",
